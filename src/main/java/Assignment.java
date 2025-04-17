@@ -7,12 +7,19 @@ public class Assignment {
     public static final Scanner scanner = new Scanner(System.in);
     
     public static void main(String[] args) {
-      String repeated = repeatWord("", 0);
-      System.out.println(repeated);
-      String pyramid = createPyramid(0);
-      String FizzBuzz = countTo(3);
-      
+        // Test repeatWord method
+        String repeated = repeatWord("hello", 3);  // Expected: "hello, hello, hello"
+        System.out.println("Repeated Word: " + repeated);
+    
+        // Test createPyramid method
+        String pyramid = createPyramid(3);  // Expected: "1\n22\n333"
+        System.out.println("Pyramid:\n" + pyramid);
+    
+        // Test countTo method
+        String FizzBuzz = countTo(6);  // Expected: "1 2 Fizz 4 Buzz Fizz"
+        System.out.println("FizzBuzz: " + FizzBuzz);
     }
+    
     
     /**
      * Exercise 1: Word Repeater
@@ -20,15 +27,22 @@ public class Assignment {
      * Example: word="hello" times=3 → "hello hello hello"
      */
     public static String repeatWord(String word, int times) {
-       
-        // TODO: Implement this method
-        // Use a while loop to build a string that repeats the word
-        // Words should be separated by single spaces
-        // No trailing space at the end
-        return "test";
+        StringBuilder result = new StringBuilder();
+        
+        int i = 0;
+        while (i < times) {
+            result.append(word);
+            if (i < times - 1) {
+                result.append(" "); // Use a space instead of a comma
+            }
+            i++;
+        }
+    
+        return result.toString();
+    }
 
     
-    }
+    
     
     /**
      * Exercise 2: Number Pyramid
@@ -39,14 +53,23 @@ public class Assignment {
      * 333
      */
     public static String createPyramid(int maxNumber) {
-        // TODO: Implement this method
-        // Use nested while loops:
-        // - Outer loop for each row
-        // - Inner loop to repeat the number
-        // Use \n for newlines
-        return "";
-    }
+        StringBuilder result = new StringBuilder();
+        
+        int i = 1;
+        while (i <= maxNumber) {
+            int j = 0;
+            while (j < i) {
+                result.append(i);
+                j++;
+            }
+            if (i < maxNumber) {
+                result.append("\n");
+            }
+            i++;
+        }
     
+        return result.toString();
+    }
  
     
     
@@ -59,12 +82,28 @@ public class Assignment {
      * Example: countTo(6) → "1 2 Fizz 4 Buzz Fizz"
      */
     public static String countTo(int maxNumber) {
-        // TODO: Implement this method
-        // Use a while loop
-        // Use string concatenation
-        // Numbers/words should be separated by spaces
-        // No trailing space at the end
-        return "";
+        StringBuilder result = new StringBuilder();
+        
+        int i = 1;
+        while (i <= maxNumber) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                result.append("FizzBuzz");
+            } else if (i % 3 == 0) {
+                result.append("Fizz");
+            } else if (i % 5 == 0) {
+                result.append("Buzz");
+            } else {
+                result.append(i);
+            }
+            
+            if (i < maxNumber) {
+                result.append(" ");
+            }
+            
+            i++;
+        }
+    
+        return result.toString();
     }
     
   
